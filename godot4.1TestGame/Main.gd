@@ -14,12 +14,15 @@ func _process(delta):
 
 #function hit fired in player script emits and fires game over fn
 func game_over():
+	$Music.stop()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$DeathSound.play()
 
 func new_game():
 	score = 0
+	$Music.play()
 	get_tree().call_group("mobs", "queue_free")
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
