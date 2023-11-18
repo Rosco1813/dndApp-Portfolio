@@ -37,7 +37,6 @@
 </div>
 
 <style>
-	/* py-4 grid gap-4 md:grid-cols-2 grid-cols-1 */
 	.spellBookPageWrap {
 		padding: 0px 16px;
 	}

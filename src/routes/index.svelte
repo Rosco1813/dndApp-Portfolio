@@ -6,7 +6,6 @@
 	let filteredPokemon = [];
 
 	$: {
-		console.log(searchTerm);
 		if (searchTerm) {
 			filteredPokemon = $pokemon.filter((pokeman) =>
 				pokeman.name.toLowerCase().includes(searchTerm.toLowerCase())
