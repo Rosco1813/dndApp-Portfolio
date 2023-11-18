@@ -18,7 +18,7 @@
 </script>
 
 <div class="spellBookPageWrap">
-	<h1 class="sbTitle">svelte pokedex</h1>
+	<h1 class="sbTitle">Pokedex</h1>
 
 	<div class="ssInputWrap">
 		<input
@@ -47,8 +47,6 @@
 		justify-content: space-evenly;
 		align-items: center;
 		width: 97vw;
-
-		/* display: inline-block; */
 	}
 
 	.sbTitle {
@@ -57,7 +55,7 @@
 		margin: 8px 0px;
 		text-transform: uppercase;
 	}
-	/* w-96 rounded-md text-lg p-4 border-2 border-gray-200 */
+
 	.spellSearchInput {
 		width: 96px;
 		border-radius: 8px;
@@ -67,7 +65,6 @@
 		width: 33%;
 	}
 	@media only screen and (max-width: 640px) {
-		/* Styles for screens smaller than 640px go here */
 		.spellSearchInput {
 			width: 50%;
 		}

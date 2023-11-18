@@ -2,7 +2,8 @@
 	import About from '../howto/character.svelte';
 	import { pokemon } from '../../stores/pokestore.js';
 	import PokemanCard from '../../components/pokemanCard.svelte';
-	import wizard from '../../../static/openSourcerer.jpg';
+	// import wizard from '../../../static/openSourcerer.jpg';
+	import wizard from './openSourcerer.jpg';
 	import { Motion, useMotionValue, useMotionTemplate } from 'svelte-motion';
 	let name = '';
 	let searchTerm = '';
@@ -87,12 +88,6 @@
 
 	<h1>enter the game</h1>
 
-	<!-- <M.h1>A big motion header</M.h1>
-
-<M.div>A big motion header</M.div>
-
-<M.button>A motion button</M.button> -->
-
 	<div class="content">
 		<span>
 			<div class="form__group field m-12">
@@ -109,7 +104,9 @@
 				<label for="name" class="form__label" />
 				<button on:click={submit_Answer}>submit</button>
 			</div>
-			{name}
+			<div class="myName">
+				{name}
+			</div>
 			{#if guess >= 1}
 				<div class="text-red-50">
 					X
@@ -129,43 +126,21 @@
 			<div class="">
 				Good Guess, oh shit! you have encountered a wild beast, what ever will you do?!
 			</div>
-
-			<div class="py-4 grid gap-4 md:grid-cols-2 grid-cols-1">
+			<p class="fightTime">time to fight</p>
+			<div class="fightArena">
 				{#each $pokemon as pokeman}
 					{#if pokeman.id === random}
 						<div>
-							<p>time to fight</p>
-							<img src={wizard} alt="" width="200" height="200" />
+							<img src={wizard} alt="" width="100" height="100" />
 							<span class="flex flex-col">
 								<button class="bg-slate-500 m-2 h-4 w-24">fight</button>
 								<button class="bg-slate-500 m-2 h-4 w-24">examine</button>
 								<button class="bg-slate-500 m-2 h-4 w-24">catch</button>
 							</span>
 						</div>
-
-						<div class="drag-area bg-blue-500" bind:this={area} />
-						<Motion
-							drag
-							dragConstraints={{
-								left: 0,
-								right: 0,
-								top: 0,
-								bottom: 0
-							}}
-							style={{ x, y, filter: shadow }}
-							let:motion
-						>
-							<!-- <div class="box center unselectable" use:motion>
-								<span class="flex flex-col">
-									<img src={pokeman.image} alt="" width="200" height="200" />
-									<p>drag me</p>
-								</span>
-							</div> -->
-
-							<div class="grid">
-								<img src={pokeman.image} alt="" width="200" height="200" use:motion />
-							</div>
-						</Motion>
+						<div class="monster">
+							<img src={pokeman.image} alt="" width="100" height="100" />
+						</div>
 					{/if}
 				{/each}
 			</div>
@@ -176,12 +151,21 @@
 	</div>
 </div>
 
-<!-- <style lang='postcss'>
-.characterBtns{
-	@apply bg-slate-500;
-}
-</style> -->
 <style>
+	.fightArena {
+		display: flex;
+		width: 100dvw;
+		justify-content: space-evenly;
+	}
+	.myName {
+		display: flex;
+		justify-content: center;
+	}
+	.fightTime {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	h1 {
 		color: white;
 	}
@@ -196,6 +180,12 @@
 
 	.content {
 		min-height: calc(100vh - 120px);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		padding: 16px;
+		width: 100dvw;
+
 		/* 80px header + 40px footer = 120px  */
 	}
 	:global(*) {
