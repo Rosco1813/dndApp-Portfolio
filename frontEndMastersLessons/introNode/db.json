@@ -1,0 +1,29 @@
+{
+  "notes": [
+    {
+      "tags": [],
+      "content": "3rd test",
+      "id": 1697404666373
+    },
+    {
+      "tags": [],
+      "content": "unit testing - give input get output",
+      "id": 1697404718088
+    },
+    {
+      "tags": [],
+      "content": "integration testing going through a flow of functions to make sure different pieces of cod work together",
+      "id": 1697404776522
+    },
+    {
+      "tags": [],
+      "content": "end to end testing - testing entire application from start to finish",
+      "id": 1697404833087
+    },
+    {
+      "tags": [],
+      "content": "api testing - testing various apis or end points that an app exposes how api responds to inputs and requests",
+      "id": 1697405044304
+    }
+  ]
+}
