@@ -1,13 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://r8yl00yug0jx"]
+[gd_scene load_steps=14 format=3 uid="uid://r8yl00yug0jx"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_nsyqq"]
+[ext_resource type="Texture2D" uid="uid://46vrjxeo1tw4" path="res://art/swimmerOne.png" id="2_csneg"]
 [ext_resource type="Texture2D" uid="uid://co8y7g3ri37mv" path="res://art/playerGrey_up1.png" id="2_ehw61"]
 [ext_resource type="Texture2D" uid="uid://bcgata1whka0u" path="res://art/playerGrey_up2.png" id="3_ocant"]
+[ext_resource type="Texture2D" uid="uid://dxu5pu6exyu35" path="res://art/swimmerTwo.png" id="3_x3oh7"]
 [ext_resource type="Texture2D" uid="uid://c5penm78obr6e" path="res://art/playerGrey_walk1.png" id="4_gc1b3"]
+[ext_resource type="Texture2D" uid="uid://x4uhi24gh0ph" path="res://art/swimmerThree.png" id="4_ifk4h"]
 [ext_resource type="Texture2D" uid="uid://dbqda8iwwa6l3" path="res://art/playerGrey_walk2.png" id="5_2g8ec"]
+[ext_resource type="Texture2D" uid="uid://dat2ajqgmgisb" path="res://art/simmerFour.png" id="5_4b5vv"]
+[ext_resource type="Texture2D" uid="uid://bg8oioawsebn3" path="res://art/swimmerFive.png" id="6_fw5pw"]
+[ext_resource type="Texture2D" uid="uid://cud60yo7n3nmo" path="res://art/swimmerSix.png" id="7_bmpd5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o3eaq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_csneg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x3oh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ifk4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4b5vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fw5pw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bmpd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ifk4h")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ehw61")
@@ -41,9 +73,11 @@ script = ExtResource("1_nsyqq")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.0237396
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_o3eaq")
-animation = &"up"
+animation = &"swim"
+frame_progress = 0.799175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

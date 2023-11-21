@@ -6,6 +6,7 @@ signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
+@export var diver = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -39,14 +40,46 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
+	if !diver:
+		if velocity.x != 0:
+			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_v = false
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+		elif velocity.y != 0:
+			$AnimatedSprite2D.animation = "up"
+			$AnimatedSprite2D.flip_v = velocity.y > 0
+		
+	#if velocity.x != 0
+	if diver:
+		speed = 175
+		if velocity.x < 0:
+			$AnimatedSprite2D.animation = "swim"
+			#$AnimatedSprite2D.flip_h = false
+			
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+		elif velocity.x > 0:
+			$AnimatedSprite2D.animation = "swim"
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+		elif velocity.y < 0:
+			$AnimatedSprite2D.animation = "swim"
+			$AnimatedSprite2D.flip_v = velocity.y > 0
+		elif velocity.y > 0:
+			$AnimatedSprite2D.animation = "swim"
+			$AnimatedSprite2D.flip_v = velocity.y < 0
+		
+		#$AnimatedSprite2D.animation = "swim"
+		#$AnimatedSprite2D.look_at(Vector2(300, 100))
+		#$AnimatedSprite2D.flip_v = false
 	# See the note below about boolean assignment.
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		#$AnimatedSprite2D.flip_h = velocity.x < 0
+	#elif velocity.y != 0:
+		#$AnimatedSprite2D.animation = "swim"
+		#$AnimatedSprite2D.flip_v = velocity.y < 0
+
+	
+
+		
 
 
 #green icon indicates signal is connected to this fn 
