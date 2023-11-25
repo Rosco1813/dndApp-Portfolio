@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://r8yl00yug0jx"]
+[gd_scene load_steps=16 format=3 uid="uid://r8yl00yug0jx"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_nsyqq"]
 [ext_resource type="Texture2D" uid="uid://46vrjxeo1tw4" path="res://art/swimmerOne.png" id="2_csneg"]
 [ext_resource type="Texture2D" uid="uid://co8y7g3ri37mv" path="res://art/playerGrey_up1.png" id="2_ehw61"]
+[ext_resource type="Texture2D" uid="uid://pnx05f5ovfwl" path="res://art/ratEnemy.png" id="2_wu7p5"]
+[ext_resource type="Texture2D" uid="uid://c3yia5tqif5al" path="res://art/rat2BigMamu.png" id="3_fpp43"]
 [ext_resource type="Texture2D" uid="uid://bcgata1whka0u" path="res://art/playerGrey_up2.png" id="3_ocant"]
 [ext_resource type="Texture2D" uid="uid://dxu5pu6exyu35" path="res://art/swimmerTwo.png" id="3_x3oh7"]
 [ext_resource type="Texture2D" uid="uid://c5penm78obr6e" path="res://art/playerGrey_walk1.png" id="4_gc1b3"]
@@ -14,6 +16,22 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o3eaq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wu7p5")
+}],
+"loop": true,
+"name": &"goodRat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fpp43")
+}],
+"loop": true,
+"name": &"rat2BigMamu",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_csneg")
@@ -64,23 +82,25 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5oq4q"]
-radius = 27.0
-height = 54.0
+radius = 19.0
+height = 64.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(140, 102)
+position = Vector2(-3, -1)
 script = ExtResource("1_nsyqq")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -0.0237396
-scale = Vector2(0.5, 0.5)
+position = Vector2(6.98699, 1.40782)
+scale = Vector2(0.502246, 0.5)
 sprite_frames = SubResource("SpriteFrames_o3eaq")
-animation = &"swim"
-frame_progress = 0.799175
+animation = &"rat2BigMamu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(19, 14)
 shape = SubResource("CapsuleShape2D_5oq4q")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-65, 10)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

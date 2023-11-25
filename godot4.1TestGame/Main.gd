@@ -1,6 +1,9 @@
 extends Node
 
 @export var mob_scene: PackedScene
+
+@onready var lazer_container = $LazerContainer
+
 var score
 var showCreeps = true;
 # Called when the node enters the scene tree for the first time.
@@ -23,12 +26,18 @@ func game_over():
 
 func new_game():
 	score = 0
-	$Music.play()
+	#$Music.play()
 	get_tree().call_group("mobs", "queue_free")
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
+	$Player.lazer_shot.connect(_on_player_lazer_shot)
 	$StartTimer.start()
+	
+func _on_player_lazer_shot(lazer_scene, location):
+	var lazer = lazer_scene.instantiate()
+	lazer.global_position = location
+	lazer_container.add_child(lazer)
 														
 func _on_score_timer_timeout():
 	score += 1
