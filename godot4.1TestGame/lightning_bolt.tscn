@@ -1,24 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://6jxpigsii4m3"]
+[gd_scene load_steps=6 format=3 uid="uid://6jxpigsii4m3"]
 
 [ext_resource type="Script" path="res://lightning_bolt.gd" id="1_67aei"]
-[ext_resource type="Texture2D" uid="uid://dktem062tuver" path="res://art/lightningBolt.png" id="1_502p3"]
+[ext_resource type="Texture2D" uid="uid://dxe8n27nx57gj" path="res://art/mainCharacter/lazer.png" id="2_i02xq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t04u0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i02xq")
+}],
+"loop": true,
+"name": &"lazer",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y3b2"]
-size = Vector2(80, 6)
+size = Vector2(104, 40)
 
-[node name="lightningBolt" type="RigidBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cn7t"]
+size = Vector2(128, 56)
+
+[node name="lazer" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_velocity = Vector2(1000, 0)
 script = ExtResource("1_67aei")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 0)
-texture = ExtResource("1_502p3")
+sprite_frames = SubResource("SpriteFrames_t04u0")
+animation = &"lazer"
+frame_progress = 0.553561
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -3)
+position = Vector2(4, -4)
 shape = SubResource("RectangleShape2D_7y3b2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-40, -4)
+position = Vector2(-56, -4)
 scale = Vector2(0.65, 0.4)
 
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_2cn7t")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

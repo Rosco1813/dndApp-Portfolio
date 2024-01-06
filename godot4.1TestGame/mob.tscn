@@ -70,7 +70,7 @@ metadata/_edit_group_ = true
 position = Vector2(-2, 13)
 scale = Vector2(0.75, 0.675)
 sprite_frames = SubResource("SpriteFrames_6rsxs")
-animation = &"swim"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 14)
