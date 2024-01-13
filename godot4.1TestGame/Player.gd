@@ -71,7 +71,7 @@ func _ready():
 
 
 func _process(delta):
-	
+	hide()
 	var Lazer = lazer_scene.instantiate()
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
