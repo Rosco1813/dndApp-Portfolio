@@ -8,7 +8,7 @@
 	let name = '';
 	let searchTerm = '';
 	let correct_Answer = 'Rosco';
-	let correct;
+	let correct = false;
 	let filteredPokemon = [];
 	let random = randomInteger(1, 898);
 	let area;
@@ -26,14 +26,10 @@
 	$: {
 		console.log('the name is Rosco you passed puzzle 1');
 	}
-	$: if (name === correct_Answer || 'rosco') {
-		correct = true;
-	}
-	$: if (name === '') {
+	$: if (name === correct_Answer) {
 		correct = true;
 	}
 
-	// $:console.log('pokemon', $pokemon)
 	function submit_Answer() {
 		if (name != correct_Answer) {
 			correct = false;
@@ -107,7 +103,7 @@
 			<div class="myName">
 				{name}
 			</div>
-			{#if guess >= 1}
+			{#if guess >= 1 && !correct}
 				<div class="text-red-50">
 					X
 					{#if guess >= 2}
@@ -119,10 +115,8 @@
 				</div>
 			{/if}
 		</span>
-		{#if !correct_Answer}
-			{name}
-		{/if}
-		{#if name === correct_Answer}
+
+		{#if correct}
 			<div class="">
 				Good Guess, oh shit! you have encountered a wild beast, what ever will you do?!
 			</div>
@@ -145,8 +139,8 @@
 				{/each}
 			</div>
 		{/if}
-		{#if correct === false}
-			<div>thats not my name</div>
+		{#if guess >= 1 && !correct}
+			<div>thats not my name bro</div>
 		{/if}
 	</div>
 </div>

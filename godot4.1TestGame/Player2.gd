@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var anim_tree = $AnimationTree
+@onready var anim_state = anim_tree.get('parameters/playback')
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -8,6 +10,9 @@ var input_movement = Vector2.ZERO
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+func _ready():
+	$sword/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	hide()
@@ -34,9 +39,15 @@ func move():
 	input_movement = Input.get_vector('move_left', 'move_right', 'move_up','move_down' )
 	
 	if input_movement != Vector2.ZERO:
+		anim_tree.set('parameters/idle/blend_position', input_movement)
+		anim_tree.set('parameters/walk/blend_position', input_movement)
+		anim_tree.set('parameters/sword/blend_position', input_movement)
+		anim_tree.set('parameters/jump/blend_position',input_movement)
+		anim_state.travel('walk')
 		velocity = input_movement * SPEED
 		
 	if input_movement == Vector2.ZERO:
+		anim_state.travel('idle')
 		velocity = Vector2.ZERO
 		
 	move_and_slide()
