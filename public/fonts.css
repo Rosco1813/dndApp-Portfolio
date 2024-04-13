@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'MapleMono';
+    src: url('/fonts/MapleMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapleMono-Bold';
+    src: url('/fonts/MapleMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapleMono-BoldItalic';
+    src: url('/fonts/MapleMono-BoldItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapleMono-Italic';
+    src: url('/fonts/MapleMono-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapleMono-Light';
+    src: url('/fonts/MapleMono-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapleMono-LightItalic';
+    src: url('/fonts/MapleMono-LightItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

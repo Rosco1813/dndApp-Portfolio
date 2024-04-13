@@ -5,10 +5,10 @@ extends Node
 @onready var lazer_container = $LazerContainer
 
 var score
-var showCreeps = false;
+var showCreeps = true;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#new_game()
+	new_game()
 	pass
 
 
@@ -23,9 +23,10 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
-	#$DeathSound.play()
+	#$DeathSound.play()n
 
 func new_game():
+	print('new game')
 	score = 0
 	#$Music.play()
 	get_tree().call_group("mobs", "queue_free")

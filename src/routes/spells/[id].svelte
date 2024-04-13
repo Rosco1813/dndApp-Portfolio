@@ -30,6 +30,7 @@
 </script>
 
 <div
+	style="padding:8px;"
 	class="flex m-20 bg-white rounded-xl  border-double border-4 border-indigo-600  flex-col  w-50"
 >
 	<h1 class="text-4xl text-center my-8 uppercase">{spell.name}</h1>
@@ -100,4 +101,3 @@
 		{/each}
 	{/if}
 </div>
-

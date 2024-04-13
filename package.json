@@ -1,6 +1,7 @@
 {
 	"name": "pokedex",
 	"version": "0.0.1",
+	"type": "module",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
@@ -21,15 +22,17 @@
 		"svelte-preprocess": "^4.10.1",
 		"tailwindcss": "^3.0.1"
 	},
-	"type": "module",
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.0",
 		"@lukeed/uuid": "^2.0.0",
+		"axios": "^1.6.8",
 		"cookie": "^0.4.1",
 		"cross-env": "^7.0.3",
-		"dotenv": "^16.0.0",
+		"dotenv": "^16.4.5",
 		"jshint": "^2.13.1",
 		"lodash-es": "^4.17.21",
-		"mapbox-gl": "^2.8.2"
+		"mapbox-gl": "^2.8.2",
+		"nconf": "^0.12.1",
+		"openai": "^4.29.1"
 	}
 }

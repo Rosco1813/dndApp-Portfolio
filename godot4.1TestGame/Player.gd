@@ -67,11 +67,11 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	sprite.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
 	#this hides the character !!
-	hide()
+#	hide()
 
 
 func _process(delta):
-	hide()
+#	hide()
 	var Lazer = lazer_scene.instantiate()
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
