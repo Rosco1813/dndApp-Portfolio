@@ -156,10 +156,6 @@
 							'circle-stroke-color': 'red'
 						}
 					});
-					// }, 500);
-
-					// console.log('capital', capital);
-					// console.log('main point ', mainPoint);
 				}
 			});
 
@@ -169,7 +165,7 @@
 				map.flyTo({
 					center: e.features[0].geometry.coordinates
 				});
-				console.log('e == ', e);
+
 				// If the user clicked on one of your markers, get its information.
 				const features = map.queryRenderedFeatures(e.point, {
 					layers: ['circle'] // replace with your layer name
@@ -178,7 +174,7 @@
 					return;
 				}
 				const feature = features[0];
-				console.log('feature == ', feature);
+
 				const popup = new mapboxgl.Popup({ offset: [0, -15] })
 					.setLngLat(feature.geometry.coordinates)
 					.setHTML(
@@ -217,7 +213,15 @@
 		<div id={CONTAINER_ID} style="height:600px; width:80%;" class="self-center main-map" />
 	</div>
 	<div class="drawn-map">
-		<button on:click={click} class="bg-blue-500 p-4">show map</button>
+		<button on:click={click} class="bg-blue-500 p-4 m-4">
+			{#if show}
+				Hide
+			{:else}
+				show
+			{/if}
+
+			Drawn Map</button
+		>
 	</div>
 	{#if show}
 		<div>
