@@ -18,7 +18,7 @@
 </script>
 
 <div class="spellBookPageWrap">
-	<h1 class="sbTitle">Pokedex</h1>
+	<h1 class="sbTitle">Spell Book</h1>
 
 	<div class="ssInputWrap">
 		<input
@@ -46,7 +46,7 @@
 		flex-wrap: wrap;
 		justify-content: space-evenly;
 		align-items: center;
-		width: 97vw;
+		/* width: 97vw; */
 	}
 
 	.sbTitle {
@@ -54,6 +54,7 @@
 		text-align: center;
 		margin: 8px 0px;
 		text-transform: uppercase;
+		font-family: 'MapleMono-BoldItalic', sans-serif;
 	}
 
 	.spellSearchInput {
@@ -63,6 +64,7 @@
 		padding: 4px;
 		border: 2px solid lightcoral;
 		width: 33%;
+		font-family: 'MapleMono-LightItalic', sans-serif;
 	}
 	@media only screen and (max-width: 640px) {
 		.spellSearchInput {
@@ -72,6 +74,6 @@
 	.ssInputWrap {
 		display: flex;
 		justify-content: center;
-		width: 100dvw;
+		/* width: 100dvw; */
 	}
 </style>

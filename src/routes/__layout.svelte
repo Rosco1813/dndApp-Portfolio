@@ -5,7 +5,7 @@
 
 <Header />
 
-<main>
+<main class="main-padding">
 	<!-- this slot allows the lay out to affect all route pages  -->
 	<slot />
 </main>
@@ -28,7 +28,9 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	} */
-
+	.main-padding {
+		padding: 16px;
+	}
 	footer {
 		display: flex;
 		flex-direction: column;

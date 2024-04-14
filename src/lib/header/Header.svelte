@@ -40,14 +40,14 @@
 </script>
 
 <nav class="mainNav">
-	<button class="button" on:click={toggleModal}>Menu</button>
+	<button class="button uppercase" on:click={toggleModal}>Menu</button>
 </nav>
 
 <header />
 {#if showModal}
 	<div class="container" />
 	<div class="modal" class:showModal>
-		<ul class="routeWrap">
+		<ul class="routeWrap uppercase">
 			{#each navPages as route}
 				<li
 					class="routeTitle"
@@ -80,6 +80,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
+		font-family: 'MapleMono', sans-serif;
 	}
 	.wiz,
 	img {
@@ -90,6 +91,9 @@
 		width: 100%;
 		display: flex;
 		justify-content: center;
+	}
+	img {
+		border-radius: 16px;
 	}
 	.routeTitle {
 		padding: 4px;
@@ -119,8 +123,11 @@
 		border: none;
 		cursor: pointer;
 		outline: none;
+		font-size: 24px;
 		border-radius: 8px;
 		border: 1px solid rgb(214, 176, 218);
+		width: 50%;
+		font-family: 'MapleMono-BoldItalic', sans-serif;
 	}
 
 	.modal {

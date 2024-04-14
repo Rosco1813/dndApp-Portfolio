@@ -114,10 +114,6 @@
 			zoom: 4.5
 		});
 
-		/////////////////////////////////////////////////////////	/////////////////
-
-		///////////////////////////////////////////////////////////////////////////
-
 		map.on('load', async () => {
 			// add markers to map
 			// Add a GeoJSON source with 3 points.
@@ -217,10 +213,12 @@
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
 </svelte:head>
 <div class="flex flex-col justify-center">
-	<div id={CONTAINER_ID} style="height:600px; width:80%;" class="self-center" />
-	<span>
-		<button on:click={click} class="bg-blue-500 p-4 rounded h-18 w-20 ">show map</button>
-	</span>
+	<div class="map-wrap">
+		<div id={CONTAINER_ID} style="height:600px; width:80%;" class="self-center main-map" />
+	</div>
+	<div class="drawn-map">
+		<button on:click={click} class="bg-blue-500 p-4">show map</button>
+	</div>
 	{#if show}
 		<div>
 			<img src={customWorldMap} alt="" />
@@ -231,5 +229,28 @@
 <style language="postcss">
 	.city {
 		@apply text-[#deba6f]-400 color-[#171c1e];
+	}
+
+	.map-wrap {
+		display: flex;
+		justify-content: center;
+		border: 1px solid black;
+		/* width: 100%; */
+
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.drawn-map {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		margin-top: 16px;
+		font-family: 'MapleMono-BoldItalic', sans-serif;
+	}
+	button {
+		width: 50%;
+		border-radius: 8px;
 	}
 </style>

@@ -6,8 +6,7 @@
 	import PokemanCard from '../../components/pokemanCard.svelte';
 	import wizard from './openSourcerer.jpg';
 	import { load } from '../pokemon/[id].svelte';
-	// import wizard from '../../../static/openSourcerer.jpg';
-	// import { Motion, useMotionValue, useMotionTemplate } from 'svelte-motion';
+
 	let name = '';
 	let searchTerm = '';
 	let correct_Answer = 'Rosco';
@@ -16,13 +15,10 @@
 	let random = randomInteger(1, 898);
 	let area;
 	let loaded = false;
-	// let up = 0;
-	// let down = 0;
-	// let left = 0;
-	// let right = 0;
+
 	let number;
 	let startingMessage = $openaiResponse.choices[0].message.content;
-	// let startingMessage = '';
+
 	let guess = 0;
 	let options = '';
 	let adventureOptions = '';
@@ -31,19 +27,11 @@
 	let description = '';
 	let introduction = '';
 
-	// const x = useMotionValue(0);
-	// const y = useMotionValue(0);
-	// const shadow = useMotionTemplate`drop-shadow(${x}px ${y}px 20px rgba(0,0,0,0.8))`;
-	// $: {
-	// 	console.log('the name is Rosco you passed puzzle 1');
-	// }
 	$: if (name === correct_Answer) {
 		correct = true;
 	}
 
 	const typingDelay = 800;
-
-	// Call the function to start typing effect
 
 	function submit_Answer() {
 		if (name != correct_Answer) {
@@ -52,8 +40,6 @@
 			if (guess >= 3) {
 				window.location.href = '/locations';
 			}
-
-			console.log('correct ? ', correct);
 		}
 	}
 
@@ -69,36 +55,23 @@
 	}
 
 	onMount(() => {
-		console.log('loaded ', loaded);
-		// Add the event listener when the component mounts
-		// localStorage.setItem('aiResponse', startingMessage);
-		// startingMessage = localStorage.getItem('aiResponse');
-		console.log('starting message = ', $openaiResponse.choices[0]);
-		// options = startingMessage.split(/\d+\.\s+\*\*/).slice(1); // Remove the first empty entry
 		const sections = startingMessage.split('\n\n');
 		introduction = sections[0]; // Introduction text
-		const optionsText = sections.slice(1).join('\n\n'); // Join the remaining sections in case there are multiple paragraphs of options
-
-		// Splitting the options section into an array of options
+		const optionsText = sections.slice(1).join('\n\n'); // Join the remaining
 		let options = optionsText.split(/\d+\.\s+/).slice(1);
-		console.log('options = ', options);
+
 		adventureOptions = options.map((option) => {
 			[title, ...descriptionParts] = option.split(':');
-			description = descriptionParts.join(':').trim(); // Rejoin in case there are multiple ":**" in the description
+			description = descriptionParts.join(':').trim(); // Rejoin in case
 			if (title.startsWith('**')) {
-				// Remove the ** characters from the beginning
 				title = title.substring(2);
 			}
 			if (description.startsWith('**')) {
-				// Remove the ** characters from the beginning
 				description = description.substring(2);
 			}
 			return { title: title.trim(), description };
 		});
-
 		loaded = true;
-
-		// Return a cleanup function that Svelte will run when the component is destroyed
 	});
 </script>
 
@@ -129,16 +102,7 @@
 			<!-- {#if guess >= 1 && !correct} -->
 			<div class="container">
 				{#if loaded}
-					<!-- <div
-						style="display: flex; flex-direction:column; border: 1px solid black; border-radius:12px; font-size:20px; margin-bottom:8px; padding:8px; text-align:center;     background-color: rgba(255, 255, 255, 0.1); 
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);"
-						class="option"
-					>
-						{introduction}
-					</div> -->
 					<button class="option-button">
-						<!-- {introduction} -->
 						{introduction}
 					</button>
 					{#each adventureOptions as { title, description }}
@@ -147,19 +111,6 @@
 							<h2 class="title">{title}</h2>
 							<div class="description">{description}</div>
 						</button>
-
-						<!-- <div
-							style="display: flex; flex-direction:column; border: 1px solid black; border-radius:12px; font-size:20px; margin-bottom:8px; padding:8px; text-align:center;     background-color: rgba(255, 255, 255, 0.1); 
-							backdrop-filter: blur(10px);
-							-webkit-backdrop-filter: blur(10px);"
-							class="option"
-						>
-						
-							<h2>
-								{title}
-							</h2>
-							<div class="description">{description}</div>
-						</div> -->
 					{/each}
 				{/if}
 			</div>
@@ -177,7 +128,7 @@
 		</span>
 
 		{#if correct}
-			<div class="">
+			<div class="blurb">
 				Good Guess, oh shit! you have encountered a wild beast, what ever will you do?!
 			</div>
 			<p class="fightTime">time to fight</p>
@@ -208,14 +159,10 @@
 
 <style>
 	@import '../../../public/fonts.css';
-	/* .typing-animation {
-		overflow: hidden;
-		white-space: nowrap;
-		animation: typing 2s steps(30, end);
-	} */
-	/* .option:hover {
-	
-	} */
+
+	.blurb {
+		max-width: 500px;
+	}
 	.title {
 		display: flex;
 		width: 100%;
@@ -235,17 +182,17 @@
 		background-color: rgba(255, 255, 255, 0.1);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
-		cursor: pointer; /* Make the button behave like a clickable element */
-		outline: none; /* Remove default outline when focused */
+		cursor: pointer;
+		outline: none;
 		font-family: 'MapleMono-Italic', sans-serif;
+		max-width: 600px;
 	}
 
 	.option-button h2 {
-		margin: 0; /* Remove default margin for better alignment */
+		margin: 0;
 	}
 
 	.option-button:hover {
-		/* Add hover styles if desired */
 		box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
 		cursor: pointer;
 	}
@@ -257,7 +204,6 @@
 	}
 	.fightArena {
 		display: flex;
-		width: 100dvw;
 		justify-content: space-evenly;
 	}
 	.myName {
@@ -283,6 +229,7 @@
 		background-color: black;
 		background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
 		height: 100vh;
+		width: 100%;
 		color: white;
 		font: 1.3rem Inconsolata, monospace;
 		text-shadow: 0 0 5px #c8c8c8;
@@ -293,10 +240,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-		padding: 16px;
-		width: 100dvw;
-
-		/* 80px header + 40px footer = 120px  */
+		padding: 16px 32px;
 	}
 	:global(*) {
 		box-sizing: border-box;
