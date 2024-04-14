@@ -99,6 +99,31 @@
 			<div class="myName">
 				{name}
 			</div>
+			{#if correct}
+				<!-- <div class="blurb">
+					Good Guess, oh shit! you have encountered a wild beast, what ever will you do?!
+				</div> -->
+				<p class="fightTime">time to fight</p>
+				<div class="fightArena">
+					{#each $pokemon as pokeman}
+						{#if pokeman.id === random}
+							<div>
+								<img src={wizard} alt="" width="100" height="100" />
+								<span class="flex flex-col">
+									<button class="bg-slate-500 m-2 h-4 w-24">fight</button>
+									<button class="bg-slate-500 m-2 h-4 w-24">examine</button>
+									<button class="bg-slate-500 m-2 h-4 w-24">catch</button>
+									<button class="bg-slate-500 m-2 h-4 w-24">run</button>
+								</span>
+							</div>
+							<div class="monster">
+								<img src={pokeman.image} alt="" width="100" height="100" />
+							</div>
+							<div class="shadow" style="" />
+						{/if}
+					{/each}
+				</div>
+			{/if}
 			<!-- {#if guess >= 1 && !correct} -->
 			<div class="container">
 				{#if loaded}
@@ -127,30 +152,6 @@
 			{/if}
 		</span>
 
-		{#if correct}
-			<div class="blurb">
-				Good Guess, oh shit! you have encountered a wild beast, what ever will you do?!
-			</div>
-			<p class="fightTime">time to fight</p>
-			<div class="fightArena">
-				{#each $pokemon as pokeman}
-					{#if pokeman.id === random}
-						<div>
-							<img src={wizard} alt="" width="100" height="100" />
-							<span class="flex flex-col">
-								<button class="bg-slate-500 m-2 h-4 w-24">fight</button>
-								<button class="bg-slate-500 m-2 h-4 w-24">examine</button>
-								<button class="bg-slate-500 m-2 h-4 w-24">catch</button>
-							</span>
-						</div>
-						<div class="monster">
-							<img src={pokeman.image} alt="" width="100" height="100" />
-						</div>
-						<div class="shadow" style="" />
-					{/if}
-				{/each}
-			</div>
-		{/if}
 		{#if guess >= 1 && !correct}
 			<div>thats not my name bro</div>
 		{/if}
