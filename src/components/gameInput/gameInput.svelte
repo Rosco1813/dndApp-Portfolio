@@ -4,6 +4,8 @@
 	export let guess = 0;
 	export let correct = false;
 
+	let testValue = 'test';
+
 	$: if (name === correct_Answer) {
 		correct = true;
 	}
